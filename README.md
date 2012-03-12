@@ -2,6 +2,7 @@
 this is a AI CS5 (Extend)script collection for generating Voronoi diagrams in Adobe Illustrator.  
 The Voronoi implementation is taken from [gorhills javascript-voronoi port at github](https://github.com/gorhill/Javascript-Voronoi)   
 Thanx a lot for this MIT licensed code.  
+  
 ##GETTING STARTED    
 to see what is happening just [download the whole package](https://github.com/fabiantheblind/Illustrator-Javascript-Voronoi/zipball/master). Run the script from Illustrator by hitting **CMD+F12 (on Mac) or STRG+F12 (on Win)** and selecting the file **voronoi_basic.jsx.** Or download the file [rhill-voronoi-core.js"](https://raw.github.com/gorhill/Javascript-Voronoi/master/rhill-voronoi-core.js) and paste the code below into a new file that lies next to the voronoi-core.
 
@@ -29,7 +30,11 @@ to see what is happening just [download the whole package](https://github.com/fa
 	$.writeln (array.join ("\r"));
 	}
   
-	
-a more complex graphic is created with **voronoi.jsx**   
+#EXAMPLES
+###voronoi_basic.jsx
+As mentioned above it builds the basic example by gorhill in Illustrator    	
+###voronoi.jsx
+a more complex graphic is created withthe script **voronoi.jsx** (also contained in the package). It uses the Unibody 8 SmallCaps Regular font from [http://www.underware.nl/](http://www.underware.nl/)   
+###voronoi_fromSelection.jsx
 there will be a version that works with the selection  
 
