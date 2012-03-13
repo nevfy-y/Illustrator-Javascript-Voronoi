@@ -31,10 +31,14 @@ to see what is happening just [download the whole package](https://github.com/fa
 	}
   
 #EXAMPLES
+All the examples below use *only* the points. Curves dont get calculated. If you want to reflect curves - add pathpoints along it!
 ###voronoi_basic.jsx
 As mentioned above it builds the basic example by gorhill in Illustrator    	
 ###voronoi.jsx
-a more complex graphic is created withthe script **voronoi.jsx** (also contained in the package). It uses the Unibody 8 SmallCaps Regular font from [http://www.underware.nl/](http://www.underware.nl/)   
+a more complex graphic is created with the script **voronoi.jsx** (also contained in the package). It uses the Unibody 8 SmallCaps Regular font from [http://www.underware.nl/](http://www.underware.nl/)   
 ###voronoi_fromSelection.jsx
-there will be a version that works with the selection  
-
+The "voronoi_fromSelection.jsx" script takes the selection from the active document and copies it to a new document with the same size as the source document. **It works with text, path items and compund paths. The best thing is to release all artworks to simple path items. (Not tested yet with mesh items, symbols, raster items, graph items or placedItems)** Than the copied items will be transformed.  
+- textFrames get conveted to outlines  
+- groups get ungrouped using [this code](http://forums.adobe.com/thread/456042) by Nokcha  
+- all compound paths get released [based on this example](http://forums.adobe.com/message/2140054)   
+Afterwards it creates the diagram onto a new layer.**Be aware of the amount of points you process**
