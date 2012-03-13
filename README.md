@@ -45,7 +45,7 @@ All the examples below use *only* the path points. Curves dont get calculated. I
 ###voronoi.jsx
 a more complex graphic is created with this script. It uses the Unibody 8 SmallCaps Regular font from [underware](http://www.underware.nl/)   
 ###voronoi_fromSelection.jsx
-The "voronoi_fromSelection.jsx" script takes the selection from the active document and copies it to a new document with the same size as the source document.  
+The "voronoi_fromSelection.jsx" script takes the selection from the active document and copies it to a new document with the same size as the source document. Than comes the magic…  
   
 It works with text, path items and compound paths.
 The best thing is to release all artworks (at least roughly) to simple path items. Than select the graphic you want to convert to a diagram. 
