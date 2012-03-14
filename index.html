@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+
+  <title>fabiantheblind/Illustrator-Javascript-Voronoi @ GitHub</title>
+
+  <style type="text/css">
+    body {
+      margin-top: 1.0em;
+      background-color: #ffffff;
+      font-family: Helvetica, Arial, FreeSans, san-serif;
+      color: #000000;
+    }
+    #container {
+      margin: 0 auto;
+      width: 700px;
+    }
+    h1 { font-size: 3.8em; color: #000000; margin-bottom: 3px; }
+    h1 .small { font-size: 0.4em; }
+    h1 a { text-decoration: none }
+    h2 { font-size: 1.5em; color: #000000; }
+    h3 { text-align: center; color: #000000; }
+    a { color: #000000; }
+    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
+    .download { float: right; }
+    pre { background: #000; color: #fff; padding: 15px;}
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .footer { text-align:center; padding-top:30px; font-style: italic; }
+  </style>
+</head>
+
+<body>
+  <a href="https://github.com/fabiantheblind/Illustrator-Javascript-Voronoi"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+
+  <div id="container">
+
+    <div class="download">
+      <a href="https://github.com/fabiantheblind/Illustrator-Javascript-Voronoi/zipball/master">
+        <img border="0" width="90" src="https://github.com/images/modules/download/zip.png"></a>
+      <a href="https://github.com/fabiantheblind/Illustrator-Javascript-Voronoi/tarball/master">
+        <img border="0" width="90" src="https://github.com/images/modules/download/tar.png"></a>
+    </div>
+
+    <h1><a href="https://github.com/fabiantheblind/Illustrator-Javascript-Voronoi">Illustrator-Javascript-Voronoi</a>
+      <span class="small">by <a href="https://github.com/fabiantheblind">fabiantheblind</a></span></h1>
+
+    <div class="description">
+      An Adobe Illustrator Javascript implementation of gorhills implementation of Fortune's algorithm to compute Voronoi cells
+    </div>
+
+    
+      <p>#Bringing Voronoi To Adobe Illustrator  
+this is a AI CS5 (Extend)script collection for generating Voronoi diagrams in Adobe Illustrator.  
+The Voronoi implementation is taken from [gorhills javascript-voronoi port at github](https://github.com/gorhill/Javascript-Voronoi)   
+Thanx a lot for this MIT licensed code.  
+  </p>
+    
+
+    
+
+    
+      <h2>Install</h2>
+      <p>##Getting Started    
+to see what is happening just [download the whole package](https://github.com/fabiantheblind/Illustrator-Javascript-Voronoi/zipball/master). Run the script from Illustrator by hitting **CMD+F12 (on Mac) or STRG+F12 (on Win)** and selecting the file **voronoi_basic.jsx.** Or download the file [rhill-voronoi-core.js"](https://raw.github.com/gorhill/Javascript-Voronoi/master/rhill-voronoi-core.js) and paste the code below into a new file that lies next to the rhill-voronoi-core.js.  
+The function util_inspect_properties(f) works with the [Extend Script Toolkit](http://www.adobe.com/devnet/scripting.html) console.
+
+	#include "rhill-voronoi-core.js"
+	var voronoi = new Voronoi();  
+	var bbox = {xl:0,xr:800,yt:0,yb:600};  
+	var vertices = [{x:200, y:200}, {x:50, y:250}, {x:400, y:100} /* , ... */];  
+	// a 'vertex' is an object exhibiting 'x' and 'y' properties. The  
+	// Voronoi object will add a unique 'voronoiId' property to all  
+	// vertices. The 'voronoiId' can be used as a key to lookup the  
+	// associated cell in 'diagram.cells'.  
+	var diagram = voronoi.compute(vertices, bbox);
+	    
+	// now inspect the code with the function util_inspect_properties
+	// by Peter "the Magnificant" Kahrel  
+	// http://www.kahrel.plus.com/indesign/scriptui.html   
+	// look under "Displaying properties and methods"  
+	$.writeln (util_insepct_properties(result.cells[0].site));
+	  
+	function  util_inspect_properties (f) {  
+	$.writeln (f.reflect.name);
+	var props = f.reflect.properties;
+	var array = [];
+	for (var i = 0; i < props.length; i++)
+	try {array.push (props[i].name + ": " + f[props[i].name])} catch (_){}
+	array.sort ();  
+	$.writeln (array.join ("\r"));
+	}
+  
+#Examples
+There are three of them
+###voronoi_basic.jsx
+As mentioned above it builds the basic example by gorhill in Illustrator    
+  
+  
+    
+All the examples below use *only* the path points. Curves dont get calculated. If you want to reflect curves - add pathpoints along it! [(have a look at this)](http://preview.tinyurl.com/78yg4ht)
+	
+###voronoi.jsx
+a more complex graphic is created with this script. It uses the Unibody 8 SmallCaps Regular font from [underware](http://www.underware.nl/)   
+###voronoi_fromSelection.jsx
+The "voronoi_fromSelection.jsx" script takes the selection from the active document and copies it to a new document with the same size as the source document. Than comes the magic…  
+  
+It works with text, path items and compound paths.
+The best thing is to release all artworks (at least roughly) to simple path items. Than select the graphic you want to convert to a diagram. 
+(Not tested yet with mesh items, symbols, raster items, graph items or placed items)  
+Than the copied items will be transformed. The script will try to release all groups and compound paths turn text into outlines. But if you want to save some time do it yourself.    
+#####User Interaction - Step by Step   
+1. release as much compound paths as possible  
+2. turn text to outlines    
+3. release all groups   
+4. select your graphic  
+5. run the script  
+Depending on how many points you process* you can make some coffee or watch the script working for you    
+  
+#####Transformations
+These are the transformations that occur:
+      
+- copies selection to a new document with the same size as the source doc
+- textFrames get converted to outlines  
+- groups get ungrouped using [this code (ungroupV1.js)](http://forums.adobe.com/thread/456042) by Nokcha  
+- all compound paths get released [based on this example](http://forums.adobe.com/message/2140054)   
+- calculates the diagram  
+- locks the original layer and makes it invisible  
+- creates a layer with the edges  
+- calculates cell colors based on hsl circle or randomly   
+- creates a layer with the cells
+- creates a layer with the sites  
+  
+#####Options  
+In the top of the script are some global variables:  
+    
+- COLOREDCELLS -> if true all cells get colored randomly  
+- HSBCOLORSCELLS -> if true the colors are on the hsb circle  
+- STROKEDCELLS -> if true all cells get a black stroke  
+- DRAWCELLS -> if true it creates a layer with the cells  
+- DRAWEDGES -> if true it creates a layer with the edges   
+- DRAWSITES -> if true it creates a layer with the sites  
+  
+#####Video 2 voronoi_fromSelection.jsx
+See the video here[https://vimeo.com/38493279](https://vimeo.com/38493279)  </p>
+    
+
+    
+      <h2>License</h2>
+      <p>Same as gorhill. This code is under MIT License.  
+This product includes software developed by netbluew@nate.com and its contributors  
+([ungroupV1.js](http://forums.adobe.com/thread/456042) by Nokcha).  
+  
+Copyright (c)  2012 Fabian "fabiantheblind" Morón Zirfas  
+    
+Permission is hereby granted, free of charge, to any person obtaining a copy of thissoftware and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.  
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.  
+see also http://www.opensource.org/licenses/mit-license.php
+</p>
+    
+
+    
+      <h2>Authors</h2>
+      <p>fabiantheblind (fabiantheblind@googlemail.com)<br/>Raymond Hill (rhill@raymondhill.net)<br/>      </p>
+    
+
+    
+      <h2>Contact</h2>
+      <p>fabiantheblind (fabiantheblind@googlemail.com)<br/>      </p>
+    
+
+    <h2>Download</h2>
+    <p>
+      You can download this project in either
+      <a href="https://github.com/fabiantheblind/Illustrator-Javascript-Voronoi/zipball/master">zip</a> or
+      <a href="https://github.com/fabiantheblind/Illustrator-Javascript-Voronoi/tarball/master">tar formats.
+    </p>
+    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
+      by running:
+      <pre>$ git clone git://github.com/fabiantheblind/Illustrator-Javascript-Voronoi</pre>
+    </p>
+
+    <div class="footer">
+      get the source code on GitHub : <a href="https://github.com/fabiantheblind/Illustrator-Javascript-Voronoi">fabiantheblind/Illustrator-Javascript-Voronoi</a>
+    </div>
+
+  </div>
+
+</body>
+</html>
