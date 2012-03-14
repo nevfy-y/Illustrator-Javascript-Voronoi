@@ -81,7 +81,11 @@ In the top of the script are some global variables:
 - STROKEDCELLS -> if true all cells get a black stroke  
 - DRAWCELLS -> if true it creates a layer with the cells  
 - DRAWEDGES -> if true it creates a layer with the edges   
-- DRAWSITES -> if true it creates a layer with the sites  
+- DRAWSITES -> if true it creates a layer with the sites
+- ANGLEOFFSET -> define the starting point of the hsl angle  
+- ANGLE =  -> define the range of the angle  
+- SATURATION -> …  
+- LIGHTNESS -> …    
   
 #####Video 2 voronoi_fromSelection.jsx
 See the video here[https://vimeo.com/38493279](https://vimeo.com/38493279)  
