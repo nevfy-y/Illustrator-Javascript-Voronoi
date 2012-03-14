@@ -83,6 +83,8 @@ In the top of the script are some global variables:
 - DRAWEDGES -> if true it creates a layer with the edges   
 - DRAWSITES -> if true it creates a layer with the sites  
   
+#####Video 2 voronoi_fromSelection.jsx
+<iframe src="http://player.vimeo.com/video/38493279?byline=0&amp;portrait=0&amp;color=ffffff" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 #####License  
 Same as gorhill. This code is under MIT License.  
 This product includes software developed by netbluew@nate.com and its contributors  
